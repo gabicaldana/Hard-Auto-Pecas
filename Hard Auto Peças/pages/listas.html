@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listas - Hard Auto Peças</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../index.html"><img src="../logo_simbolos/HardAutoPecas.png" width="120" alt="Hard Auto Peças"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Alternar navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="galeria.html">Galeria</a></li>
+                    <li class="nav-item"><a class="nav-link" href="empresa.html">Empresa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="artigos.html">Artigos</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mais</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="formatacao.html">Formatação</a></li>
+                            <li><a class="dropdown-item" href="listas.html">Listas</a></li>
+                            <li><a class="dropdown-item" href="links.html">Links Externos</a></li>
+                            <li><a class="dropdown-item" href="tabela.html">Tabela</a></li>
+                            <li><a class="dropdown-item" href="documentos.html">Documentos</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex me-3" role="search">
+                    <input class="form-control me-2" type="search" placeholder="O que você busca?" aria-label="Search" />
+                    <button class="btn btn-outline-dark" type="submit">Buscar</button>
+                </form>
+                <ul class="navbar-nav ms-auto align-items-center gap-2">
+                    <li class="nav-item"><a class="nav-link" href="#" title="Localização"><svg style="color: orangered;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></svg></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" title="Informações"><svg style="color: orangered;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16"><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/></svg></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" title="Minha conta"><svg style="color: orangered;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></svg></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" title="Carrinho"><svg style="color: orangered;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16"><path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/></svg></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container section content-narrow">
+        <h1 class="h3 title-underline">Listas</h1>
+        <p>Exemplos de listas não ordenadas e ordenadas com diferentes <em>types</em>, e também uma lista de definição.</p>
+
+        <h2 class="h5 mt-3">Lista não ordenada (type disc, circle, square)</h2>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <ul style="list-style-type: disc;">
+                    <li>Suspensão</li>
+                    <li>Direção</li>
+                    <li>Freios</li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <ul style="list-style-type: circle;">
+                    <li>Motor</li>
+                    <li>Embreagem</li>
+                    <li>Correias</li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <ul style="list-style-type: square;">
+                    <li>Iluminação</li>
+                    <li>Bateria</li>
+                    <li>Partida</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 class="h5 mt-4">Lista ordenada (type 1, A, a, I, i)</h2>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <ol type="1">
+                    <li>Checar estoque</li>
+                    <li>Separar pedidos</li>
+                    <li>Despachar</li>
+                </ol>
+            </div>
+            <div class="col-md-6">
+                <ol type="A">
+                    <li>Garantia</li>
+                    <li>Trocas</li>
+                    <li>Devoluções</li>
+                </ol>
+                <ol type="a">
+                    <li>Retirada na loja</li>
+                    <li>Entrega expressa</li>
+                    <li>Entrega padrão</li>
+                </ol>
+                <ol type="I">
+                    <li>Faróis</li>
+                    <li>Lanternas</li>
+                    <li>Setas</li>
+                </ol>
+                <ol type="i">
+                    <li>Peças originais</li>
+                    <li>Peças paralelas</li>
+                    <li>Acessórios</li>
+                </ol>
+            </div>
+        </div>
+
+        <h2 class="h5 mt-4">Lista de definição (DL)</h2>
+        <dl class="row">
+            <dt class="col-sm-3">Amortecedor</dt>
+            <dd class="col-sm-9">Componente da suspensão que reduz oscilações.</dd>
+            <dt class="col-sm-3">Pastilha de freio</dt>
+            <dd class="col-sm-9">Responsável pela frenagem ao pressionar o disco.</dd>
+            <dt class="col-sm-3">Filtro de ar</dt>
+            <dd class="col-sm-9">Filtra impurezas do ar que entra no motor.</dd>
+        </dl>
+    </main>
+
+    <footer class="mt-4 py-4">
+        <div class="container d-flex justify-content-between align-items-center">
+            <small>© 2025 Hard Auto Peças</small>
+            <a class="text-white" href="#">Voltar ao topo</a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
