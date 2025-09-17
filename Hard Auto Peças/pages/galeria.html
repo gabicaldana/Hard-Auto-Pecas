@@ -4,21 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galeria - Hard Auto Peças</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
-    <style>
-        /* cor ou imagem de fundo sem repetição */
-        body { background-image: linear-gradient(180deg, rgba(255,106,0,0.05), rgba(255,255,255,0)); background-repeat: no-repeat; }
-    </style>
-    </head>
+</head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="../index.html"><img src="../logo_simbolos/HardAutoPecas.png" width="120" alt="Hard Auto Peças"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Alternar navegação">
+    <!--NAVBAR-->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <img src="../logo_simbolos/HardAutoPecas.png" alt="Hard Auto Peças">
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Alternar navegação">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div id="navbar" class="collapse navbar-collapse">
+
+            <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="../index.html">Início</a></li>
                     <li class="nav-item"><a class="nav-link active" href="galeria.html">Galeria</a></li>
@@ -26,7 +32,7 @@
                     <li class="nav-item"><a class="nav-link" href="artigos.html">Artigos</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mais</a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu modern-dropdown">
                             <li><a class="dropdown-item" href="formatacao.html">Formatação</a></li>
                             <li><a class="dropdown-item" href="listas.html">Listas</a></li>
                             <li><a class="dropdown-item" href="links.html">Links Externos</a></li>
@@ -35,60 +41,392 @@
                         </ul>
                     </li>
                 </ul>
-                <form class="d-flex me-3" role="search">
-                    <input class="form-control me-2" type="search" placeholder="O que você busca?" aria-label="Search" />
-                    <button class="btn btn-outline-dark" type="submit">Buscar</button>
-                </form>
-                <ul class="navbar-nav ms-auto align-items-center gap-2">
-                    <li class="nav-item"><a class="nav-link" href="#" title="Localização"><svg style="color: orangered;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></svg></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" title="Informações"><svg style="color: orangered;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16"><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/></svg></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" title="Minha conta"><svg style="color: orangered;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></svg></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" title="Carrinho"><svg style="color: orangered;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16"><path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/></svg></a></li>
-                </ul>
+                
+                <div class="navbar-actions d-flex align-items-center gap-3">
+                    <form class="search-form d-none d-lg-flex" role="search">
+                        <div class="search-input-group">
+                            <input class="form-control" type="search" placeholder="Buscar peças..." aria-label="Search" />
+                            <button class="search-btn" type="submit">
+                                <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <div class="navbar-icons d-flex align-items-center gap-2">
+                        <a class="nav-icon" href="#" title="Localização" data-bs-toggle="tooltip">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                            </svg>
+                        </a>
+                        <a class="nav-icon" href="#" title="Informações" data-bs-toggle="tooltip">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+                            </svg>
+                        </a>
+                        <a class="nav-icon" href="#" title="Minha conta" data-bs-toggle="tooltip">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                            </svg>
+                        </a>
+                        <a class="nav-icon cart-icon" href="#" title="Carrinho" data-bs-toggle="tooltip">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                            </svg>
+                            <span class="cart-badge">0</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
 
-    <main class="container section content-narrow">
-        <h1 class="h3 title-underline">Galeria de produtos</h1>
-        <p class="mb-3">25 imagens em 3 colunas, todas com o mesmo tamanho.</p>
+    <main class="container section">
+        <div class="page-header text-center mb-5">
+            <h1 class="page-title">Galeria de <span class="brand-accent">Produtos</span></h1>
+            <p class="page-subtitle lead">Confira nossa coleção completa de peças e acessórios automotivos de alta qualidade</p>
+        </div>
+        
+        <div class="gallery-filters mb-4">
+            <div class="filter-buttons d-flex flex-wrap justify-content-center gap-2">
+                <button class="btn btn-outline-primary active" data-filter="all">Todos</button>
+                <button class="btn btn-outline-primary" data-filter="motor">Motor</button>
+                <button class="btn btn-outline-primary" data-filter="freios">Freios</button>
+                <button class="btn btn-outline-primary" data-filter="suspensao">Suspensão</button>
+                <button class="btn btn-outline-primary" data-filter="eletrica">Elétrica</button>
+            </div>
+        </div>
+        
         <div class="gallery-grid">
-            
-            <img src="https://picsum.photos/seed/p1/800/600" alt="Produto 1">
-            <img src="https://picsum.photos/seed/p2/800/600" alt="Produto 2">
-            <img src="https://picsum.photos/seed/p3/800/600" alt="Produto 3">
-            <img src="https://picsum.photos/seed/p4/800/600" alt="Produto 4">
-            <img src="https://picsum.photos/seed/p5/800/600" alt="Produto 5">
-            <img src="https://picsum.photos/seed/p6/800/600" alt="Produto 6">
-            <img src="https://picsum.photos/seed/p7/800/600" alt="Produto 7">
-            <img src="https://picsum.photos/seed/p8/800/600" alt="Produto 8">
-            <img src="https://picsum.photos/seed/p9/800/600" alt="Produto 9">
-            <img src="https://picsum.photos/seed/p10/800/600" alt="Produto 10">
-            <img src="https://picsum.photos/seed/p11/800/600" alt="Produto 11">
-            <img src="https://picsum.photos/seed/p12/800/600" alt="Produto 12">
-            <img src="https://picsum.photos/seed/p13/800/600" alt="Produto 13">
-            <img src="https://picsum.photos/seed/p14/800/600" alt="Produto 14">
-            <img src="https://picsum.photos/seed/p15/800/600" alt="Produto 15">
-            <img src="https://picsum.photos/seed/p16/800/600" alt="Produto 16">
-            <img src="https://picsum.photos/seed/p17/800/600" alt="Produto 17">
-            <img src="https://picsum.photos/seed/p18/800/600" alt="Produto 18">
-            <img src="https://picsum.photos/seed/p19/800/600" alt="Produto 19">
-            <img src="https://picsum.photos/seed/p20/800/600" alt="Produto 20">
-            <img src="https://picsum.photos/seed/p21/800/600" alt="Produto 21">
-            <img src="https://picsum.photos/seed/p22/800/600" alt="Produto 22">
-            <img src="https://picsum.photos/seed/p23/800/600" alt="Produto 23">
-            <img src="https://picsum.photos/seed/p24/800/600" alt="Produto 24">
-            <img src="https://picsum.photos/seed/p25/800/600" alt="Produto 25">
+            <div class="gallery-item" data-category="motor">
+                <img src="https://picsum.photos/seed/motor1/800/600" alt="Peça do Motor 1">
+                <div class="gallery-overlay">
+                    <h3>Filtro de Óleo</h3>
+                    <p>Motor</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="freios">
+                <img src="https://picsum.photos/seed/freios1/800/600" alt="Peça de Freio 1">
+                <div class="gallery-overlay">
+                    <h3>Pastilha de Freio</h3>
+                    <p>Freios</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="suspensao">
+                <img src="https://picsum.photos/seed/suspensao1/800/600" alt="Peça de Suspensão 1">
+                <div class="gallery-overlay">
+                    <h3>Amortecedor</h3>
+                    <p>Suspensão</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="eletrica">
+                <img src="https://picsum.photos/seed/eletrica1/800/600" alt="Peça Elétrica 1">
+                <div class="gallery-overlay">
+                    <h3>Bateria</h3>
+                    <p>Elétrica</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="motor">
+                <img src="https://picsum.photos/seed/motor2/800/600" alt="Peça do Motor 2">
+                <div class="gallery-overlay">
+                    <h3>Vela de Ignição</h3>
+                    <p>Motor</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="freios">
+                <img src="https://picsum.photos/seed/freios2/800/600" alt="Peça de Freio 2">
+                <div class="gallery-overlay">
+                    <h3>Disco de Freio</h3>
+                    <p>Freios</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="suspensao">
+                <img src="https://picsum.photos/seed/suspensao2/800/600" alt="Peça de Suspensão 2">
+                <div class="gallery-overlay">
+                    <h3>Mola</h3>
+                    <p>Suspensão</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="eletrica">
+                <img src="https://picsum.photos/seed/eletrica2/800/600" alt="Peça Elétrica 2">
+                <div class="gallery-overlay">
+                    <h3>Alternador</h3>
+                    <p>Elétrica</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="motor">
+                <img src="https://picsum.photos/seed/motor3/800/600" alt="Peça do Motor 3">
+                <div class="gallery-overlay">
+                    <h3>Correia Dentada</h3>
+                    <p>Motor</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="freios">
+                <img src="https://picsum.photos/seed/freios3/800/600" alt="Peça de Freio 3">
+                <div class="gallery-overlay">
+                    <h3>Cilindro de Freio</h3>
+                    <p>Freios</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="suspensao">
+                <img src="https://picsum.photos/seed/suspensao3/800/600" alt="Peça de Suspensão 3">
+                <div class="gallery-overlay">
+                    <h3>Barra Estabilizadora</h3>
+                    <p>Suspensão</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="eletrica">
+                <img src="https://picsum.photos/seed/eletrica3/800/600" alt="Peça Elétrica 3">
+                <div class="gallery-overlay">
+                    <h3>Motor de Partida</h3>
+                    <p>Elétrica</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="motor">
+                <img src="https://picsum.photos/seed/motor4/800/600" alt="Peça do Motor 4">
+                <div class="gallery-overlay">
+                    <h3>Radiador</h3>
+                    <p>Motor</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="freios">
+                <img src="https://picsum.photos/seed/freios4/800/600" alt="Peça de Freio 4">
+                <div class="gallery-overlay">
+                    <h3>Fluido de Freio</h3>
+                    <p>Freios</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="suspensao">
+                <img src="https://picsum.photos/seed/suspensao4/800/600" alt="Peça de Suspensão 4">
+                <div class="gallery-overlay">
+                    <h3>Bucha</h3>
+                    <p>Suspensão</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="eletrica">
+                <img src="https://picsum.photos/seed/eletrica4/800/600" alt="Peça Elétrica 4">
+                <div class="gallery-overlay">
+                    <h3>Lâmpada LED</h3>
+                    <p>Elétrica</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="motor">
+                <img src="https://picsum.photos/seed/motor5/800/600" alt="Peça do Motor 5">
+                <div class="gallery-overlay">
+                    <h3>Bomba d'Água</h3>
+                    <p>Motor</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="freios">
+                <img src="https://picsum.photos/seed/freios5/800/600" alt="Peça de Freio 5">
+                <div class="gallery-overlay">
+                    <h3>Cabo de Freio</h3>
+                    <p>Freios</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="suspensao">
+                <img src="https://picsum.photos/seed/suspensao5/800/600" alt="Peça de Suspensão 5">
+                <div class="gallery-overlay">
+                    <h3>Terminal de Direção</h3>
+                    <p>Suspensão</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="eletrica">
+                <img src="https://picsum.photos/seed/eletrica5/800/600" alt="Peça Elétrica 5">
+                <div class="gallery-overlay">
+                    <h3>Fusível</h3>
+                    <p>Elétrica</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="motor">
+                <img src="https://picsum.photos/seed/motor6/800/600" alt="Peça do Motor 6">
+                <div class="gallery-overlay">
+                    <h3>Junta do Cabeçote</h3>
+                    <p>Motor</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="freios">
+                <img src="https://picsum.photos/seed/freios6/800/600" alt="Peça de Freio 6">
+                <div class="gallery-overlay">
+                    <h3>Sensor ABS</h3>
+                    <p>Freios</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="suspensao">
+                <img src="https://picsum.photos/seed/suspensao6/800/600" alt="Peça de Suspensão 6">
+                <div class="gallery-overlay">
+                    <h3>Rolamento</h3>
+                    <p>Suspensão</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="eletrica">
+                <img src="https://picsum.photos/seed/eletrica6/800/600" alt="Peça Elétrica 6">
+                <div class="gallery-overlay">
+                    <h3>Bobina de Ignição</h3>
+                    <p>Elétrica</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="motor">
+                <img src="https://picsum.photos/seed/motor7/800/600" alt="Peça do Motor 7">
+                <div class="gallery-overlay">
+                    <h3>Filtro de Ar</h3>
+                    <p>Motor</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="../index.html" class="back-to-top">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+                </svg>
+                Voltar ao início
+            </a>
         </div>
     </main>
 
-    <footer class="py-4">
-        <div class="container d-flex justify-content-between align-items-center">
-            <small>© 2025 Hard Auto Peças</small>
-            <a class="text-white" href="#">Voltar ao topo</a>
+    <footer class="modern-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="../logo_simbolos/HardAutoPecas.png" alt="Hard Auto Peças" class="footer-logo">
+                    <p class="footer-description">
+                        Sua loja de confiança para peças e acessórios automotivos nacionais e importados.
+                    </p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navegação</h4>
+                        <ul>
+                            <li><a href="../index.html">Início</a></li>
+                            <li><a href="galeria.html">Galeria</a></li>
+                            <li><a href="empresa.html">Empresa</a></li>
+                            <li><a href="artigos.html">Artigos</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Recursos</h4>
+                        <ul>
+                            <li><a href="formatacao.html">Formatação</a></li>
+                            <li><a href="listas.html">Listas</a></li>
+                            <li><a href="links.html">Links</a></li>
+                            <li><a href="tabela.html">Tabela</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Contato</h4>
+                        <ul>
+                            <li><a href="tel:+5511999999999">📞 (11) 99999-9999</a></li>
+                            <li><a href="mailto:contato@hardautopecas.com">✉️ contato@hardautopecas.com</a></li>
+                            <li><a href="#">📍 São Paulo, SP</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <small>© 2025 Hard Auto Peças. Todos os direitos reservados.</small>
+                </div>
+                <div class="footer-actions">
+                    <a href="#" class="back-to-top-btn">
+                        <span>Voltar ao topo</span>
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Modern interactions and animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize tooltips
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+
+            // Gallery filter functionality
+            const filterButtons = document.querySelectorAll('[data-filter]');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter gallery items
+                    galleryItems.forEach(item => {
+                        const category = item.getAttribute('data-category');
+                        if (filter === 'all' || category === filter) {
+                            item.style.display = 'block';
+                            item.style.animation = 'fadeInUp 0.6s ease';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Smooth scroll for back to top
+            const backToTopBtn = document.querySelector('.back-to-top-btn');
+            if (backToTopBtn) {
+                backToTopBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            // Navbar background on scroll
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                    navbar.style.backdropFilter = 'blur(20px)';
+                } else {
+                    navbar.style.background = 'var(--surface-elevated)';
+                }
+            });
+
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe elements for scroll animations
+            const animatedElements = document.querySelectorAll('.gallery-item, .page-header');
+            animatedElements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+                observer.observe(el);
+            });
+        });
+    </script>
 </body>
 </html>

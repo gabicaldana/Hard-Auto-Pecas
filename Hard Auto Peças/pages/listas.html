@@ -3,129 +3,575 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listas - Hard Auto Peças</title>
+    <title>Listas e Listagens - Hard Auto Peças</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .list-demo {
+            background: var(--surface-elevated);
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-lg);
+            padding: var(--space-2xl);
+            margin: var(--space-xl) 0;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .list-category {
+            margin-bottom: var(--space-2xl);
+            padding-bottom: var(--space-xl);
+            border-bottom: 1px solid var(--color-gray-200);
+        }
+        
+        .list-category:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .list-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--brand-primary);
+            margin-bottom: var(--space-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+        
+        .custom-list {
+            background: var(--color-gray-50);
+            border-left: 4px solid var(--brand-primary);
+            padding: var(--space-lg);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            margin: var(--space-md) 0;
+        }
+        
+        .custom-list ul, .custom-list ol {
+            margin-bottom: 0;
+            padding-left: var(--space-xl);
+        }
+        
+        .custom-list li {
+            margin-bottom: var(--space-sm);
+            line-height: 1.6;
+        }
+        
+        .styled-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .styled-list li {
+            position: relative;
+            padding-left: var(--space-xl);
+            margin-bottom: var(--space-md);
+            color: var(--text-secondary);
+        }
+        
+        .styled-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--brand-primary);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .definition-list {
+            background: var(--color-gray-50);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-gray-200);
+        }
+        
+        .definition-list dt {
+            font-weight: 600;
+            color: var(--brand-primary);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .definition-list dd {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-lg);
+            padding-bottom: var(--space-md);
+            border-bottom: 1px solid var(--color-gray-200);
+        }
+        
+        .definition-list dd:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .numbered-list {
+            counter-reset: custom-counter;
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .numbered-list li {
+            counter-increment: custom-counter;
+            position: relative;
+            padding-left: var(--space-2xl);
+            margin-bottom: var(--space-lg);
+            color: var(--text-secondary);
+        }
+        
+        .numbered-list li::before {
+            content: counter(custom-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 28px;
+            height: 28px;
+            background: var(--brand-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+        
+        .icon-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .icon-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+            padding: var(--space-md);
+            background: white;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--color-gray-200);
+        }
+        
+        .icon-list .icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            color: var(--brand-primary);
+        }
+        
+        .icon-list .content {
+            flex: 1;
+        }
+        
+        .icon-list .content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: var(--space-xs);
+            color: var(--text-primary);
+        }
+        
+        .icon-list .content p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="../index.html"><img src="../logo_simbolos/HardAutoPecas.png" width="120" alt="Hard Auto Peças"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Alternar navegação">
+    <!-- Modern Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-modern sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <img src="../logo_simbolos/HardAutoPecas.png" alt="Hard Auto Peças" class="navbar-logo">
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div id="navbar" class="collapse navbar-collapse">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="../index.html">Início</a></li>
-                    <li class="nav-item"><a class="nav-link" href="galeria.html">Galeria</a></li>
-                    <li class="nav-item"><a class="nav-link" href="empresa.html">Empresa</a></li>
-                    <li class="nav-item"><a class="nav-link" href="artigos.html">Artigos</a></li>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="galeria.html">Galeria</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="empresa.html">Empresa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="artigos.html">Blog</a>
+                    </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mais</a>
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                            Recursos
+                        </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="formatacao.html">Formatação</a></li>
-                            <li><a class="dropdown-item" href="listas.html">Listas</a></li>
-                            <li><a class="dropdown-item" href="links.html">Links Externos</a></li>
-                            <li><a class="dropdown-item" href="tabela.html">Tabela</a></li>
+                            <li><a class="dropdown-item active" href="listas.html">Listas</a></li>
+                            <li><a class="dropdown-item" href="links.html">Links</a></li>
+                            <li><a class="dropdown-item" href="tabela.html">Tabelas</a></li>
                             <li><a class="dropdown-item" href="documentos.html">Documentos</a></li>
                         </ul>
                     </li>
                 </ul>
-                <form class="d-flex me-3" role="search">
-                    <input class="form-control me-2" type="search" placeholder="O que você busca?" aria-label="Search" />
-                    <button class="btn btn-outline-dark" type="submit">Buscar</button>
-                </form>
-                <ul class="navbar-nav ms-auto align-items-center gap-2">
-                    <li class="nav-item"><a class="nav-link" href="#" title="Localização"><svg style="color: orangered;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></svg></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" title="Informações"><svg style="color: orangered;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16"><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/></svg></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" title="Minha conta"><svg style="color: orangered;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></svg></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" title="Carrinho"><svg style="color: orangered;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16"><path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/></svg></a></li>
-                </ul>
+                
+                <div class="navbar-search me-3">
+                    <form class="d-flex">
+                        <input class="form-control" type="search" placeholder="Pesquisar...">
+                        <button class="btn btn-search" type="submit">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="navbar-actions">
+                    <a href="#" class="nav-action" title="Localização">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="nav-action" title="Conta">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="nav-action" title="Carrinho">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <main class="container section content-narrow">
-        <h1 class="h3 title-underline">Listas</h1>
-        <p>Exemplos de listas não ordenadas e ordenadas com diferentes <em>types</em>, e também uma lista de definição.</p>
-
-        <h2 class="h5 mt-3">Lista não ordenada (type disc, circle, square)</h2>
-        <div class="row g-3">
-            <div class="col-md-4">
-                <ul style="list-style-type: disc;">
-                    <li>Suspensão</li>
-                    <li>Direção</li>
-                    <li>Freios</li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <ul style="list-style-type: circle;">
-                    <li>Motor</li>
-                    <li>Embreagem</li>
-                    <li>Correias</li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <ul style="list-style-type: square;">
-                    <li>Iluminação</li>
-                    <li>Bateria</li>
-                    <li>Partida</li>
-                </ul>
+    <!-- Hero Section -->
+    <section class="hero-section bg-gradient">
+        <div class="container">
+            <div class="hero-content text-center">
+                <h1 class="hero-title">Listas e Listagens</h1>
+                <p class="hero-subtitle">Explore diferentes tipos de listas para organizar e apresentar suas informações</p>
             </div>
         </div>
+    </section>
 
-        <h2 class="h5 mt-4">Lista ordenada (type 1, A, a, I, i)</h2>
-        <div class="row g-3">
-            <div class="col-md-6">
-                <ol type="1">
-                    <li>Checar estoque</li>
-                    <li>Separar pedidos</li>
-                    <li>Despachar</li>
-                </ol>
-            </div>
-            <div class="col-md-6">
-                <ol type="A">
-                    <li>Garantia</li>
-                    <li>Trocas</li>
-                    <li>Devoluções</li>
-                </ol>
-                <ol type="a">
-                    <li>Retirada na loja</li>
-                    <li>Entrega expressa</li>
-                    <li>Entrega padrão</li>
-                </ol>
-                <ol type="I">
-                    <li>Faróis</li>
-                    <li>Lanternas</li>
-                    <li>Setas</li>
-                </ol>
-                <ol type="i">
-                    <li>Peças originais</li>
-                    <li>Peças paralelas</li>
-                    <li>Acessórios</li>
-                </ol>
+    <!-- Main Content -->
+    <main class="section">
+        <div class="container">
+            <div class="content-narrow mx-auto">
+                
+                <!-- Traditional Lists -->
+                <div class="list-demo">
+                    <div class="list-category">
+                        <h2 class="list-title">
+                            📝 Listas Tradicionais
+                        </h2>
+                        
+                        <h3 class="h5 mb-3">Lista não ordenada (bullets)</h3>
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="custom-list">
+                                    <h4 class="h6 mb-3">Suspensão (disco)</h4>
+                                    <ul style="list-style-type: disc;">
+                                        <li>Amortecedores</li>
+                                        <li>Molas</li>
+                                        <li>Batentes</li>
+                                        <li>Buchas</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="custom-list">
+                                    <h4 class="h6 mb-3">Motor (círculo)</h4>
+                                    <ul style="list-style-type: circle;">
+                                        <li>Filtros</li>
+                                        <li>Velas</li>
+                                        <li>Correias</li>
+                                        <li>Óleos</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="custom-list">
+                                    <h4 class="h6 mb-3">Freios (quadrado)</h4>
+                                    <ul style="list-style-type: square;">
+                                        <li>Pastilhas</li>
+                                        <li>Discos</li>
+                                        <li>Fluidos</li>
+                                        <li>Tambores</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="h5 mb-3 mt-4">Lista ordenada (números e letras)</h3>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="custom-list">
+                                    <h4 class="h6 mb-3">Processo de atendimento</h4>
+                                    <ol type="1">
+                                        <li>Recepção do cliente</li>
+                                        <li>Identificação da necessidade</li>
+                                        <li>Consulta ao estoque</li>
+                                        <li>Apresentação de opções</li>
+                                        <li>Fechamento da venda</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="custom-list">
+                                    <h4 class="h6 mb-3">Categorias (letras)</h4>
+                                    <ol type="A">
+                                        <li>Peças originais</li>
+                                        <li>Peças paralelas</li>
+                                        <li>Acessórios</li>
+                                    </ol>
+                                    <ol type="I" style="margin-top: 1rem;">
+                                        <li>Garantia 12 meses</li>
+                                        <li>Garantia 6 meses</li>
+                                        <li>Sem garantia</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Styled Lists -->
+                    <div class="list-category">
+                        <h2 class="list-title">
+                            ✨ Listas Estilizadas
+                        </h2>
+                        
+                        <h3 class="h5 mb-3">Lista com ícones de verificação</h3>
+                        <div class="custom-list">
+                            <ul class="styled-list">
+                                <li>Atendimento personalizado e especializado</li>
+                                <li>Peças de alta qualidade e procedência</li>
+                                <li>Preços competitivos e condições especiais</li>
+                                <li>Entrega rápida em toda a região</li>
+                                <li>Garantia em todos os produtos</li>
+                                <li>Suporte técnico especializado</li>
+                            </ul>
+                        </div>
+                        
+                        <h3 class="h5 mb-3 mt-4">Lista numerada customizada</h3>
+                        <div class="custom-list">
+                            <ol class="numbered-list">
+                                <li><strong>Diagnóstico</strong> - Identificamos o problema do seu veículo</li>
+                                <li><strong>Orçamento</strong> - Apresentamos soluções e valores</li>
+                                <li><strong>Aprovação</strong> - Aguardamos sua confirmação</li>
+                                <li><strong>Execução</strong> - Realizamos o serviço com qualidade</li>
+                                <li><strong>Entrega</strong> - Seu veículo pronto e revisado</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- Icon Lists -->
+                    <div class="list-category">
+                        <h2 class="list-title">
+                            🔧 Lista de Serviços
+                        </h2>
+                        
+                        <ul class="icon-list">
+                            <li>
+                                <div class="icon">
+                                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                        <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.061L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                                    </svg>
+                                </div>
+                                <div class="content">
+                                    <h4>Suspensão e Amortecedores</h4>
+                                    <p>Manutenção completa do sistema de suspensão, troca de amortecedores, molas e buchas.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon">
+                                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                        <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.061L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                                    </svg>
+                                </div>
+                                <div class="content">
+                                    <h4>Sistema de Freios</h4>
+                                    <p>Revisão completa dos freios, troca de pastilhas, discos e fluido de freio.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon">
+                                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                        <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.061L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                                    </svg>
+                                </div>
+                                <div class="content">
+                                    <h4>Motor e Transmissão</h4>
+                                    <p>Manutenção do motor, troca de filtros, correias e revisão da transmissão.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon">
+                                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                        <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.061L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                                    </svg>
+                                </div>
+                                <div class="content">
+                                    <h4>Sistema Elétrico</h4>
+                                    <p>Diagnóstico e reparo do sistema elétrico, bateria, alternador e sistema de ignição.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Definition List -->
+                    <div class="list-category">
+                        <h2 class="list-title">
+                            📚 Glossário Técnico
+                        </h2>
+                        
+                        <div class="definition-list">
+                            <dl class="row">
+                                <dt class="col-sm-3">Amortecedor</dt>
+                                <dd class="col-sm-9">Componente da suspensão responsável por reduzir as oscilações e melhorar o conforto e controle do veículo.</dd>
+                                
+                                <dt class="col-sm-3">Pastilha de Freio</dt>
+                                <dd class="col-sm-9">Elemento do sistema de freios que pressiona o disco para gerar atrito e promover a frenagem do veículo.</dd>
+                                
+                                <dt class="col-sm-3">Filtro de Ar</dt>
+                                <dd class="col-sm-9">Responsável por filtrar impurezas do ar antes de entrar no motor, protegendo os componentes internos.</dd>
+                                
+                                <dt class="col-sm-3">Correia Dentada</dt>
+                                <dd class="col-sm-9">Sincroniza o movimento entre virabrequim e comando de válvulas, garantindo o funcionamento correto do motor.</dd>
+                                
+                                <dt class="col-sm-3">Fluido de Freio</dt>
+                                <dd class="col-sm-9">Líquido hidráulico que transmite a força do pedal de freio para as pinças e cilindros do sistema.</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Back to Top -->
+                <div class="text-center">
+                    <a href="#" class="back-to-top">
+                        ↑ Voltar ao topo
+                    </a>
+                </div>
             </div>
         </div>
-
-        <h2 class="h5 mt-4">Lista de definição (DL)</h2>
-        <dl class="row">
-            <dt class="col-sm-3">Amortecedor</dt>
-            <dd class="col-sm-9">Componente da suspensão que reduz oscilações.</dd>
-            <dt class="col-sm-3">Pastilha de freio</dt>
-            <dd class="col-sm-9">Responsável pela frenagem ao pressionar o disco.</dd>
-            <dt class="col-sm-3">Filtro de ar</dt>
-            <dd class="col-sm-9">Filtra impurezas do ar que entra no motor.</dd>
-        </dl>
     </main>
 
-    <footer class="mt-4 py-4">
-        <div class="container d-flex justify-content-between align-items-center">
-            <small>© 2025 Hard Auto Peças</small>
-            <a class="text-white" href="#">Voltar ao topo</a>
+    <!-- Modern Footer -->
+    <footer class="modern-footer">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-lg-4">
+                    <div class="footer-brand">
+                        <img src="../logo_simbolos/HardAutoPecas.png" alt="Hard Auto Peças" class="footer-logo">
+                        <p class="footer-description">
+                            Sua loja de confiança para autopeças de qualidade. 
+                            Atendemos com excelência há mais de 20 anos.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-sm-6 col-lg-2">
+                    <h5 class="footer-title">Links Rápidos</h5>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Início</a></li>
+                        <li><a href="galeria.html">Galeria</a></li>
+                        <li><a href="empresa.html">Empresa</a></li>
+                        <li><a href="artigos.html">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-sm-6 col-lg-2">
+                    <h5 class="footer-title">Recursos</h5>
+                    <ul class="footer-links">
+                        <li><a href="formatacao.html">Formatação</a></li>
+                        <li><a href="listas.html">Listas</a></li>
+                        <li><a href="links.html">Links</a></li>
+                        <li><a href="tabela.html">Tabelas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-4">
+                    <h5 class="footer-title">Contato</h5>
+                    <div class="footer-contact">
+                        <p>📍 Rua das Autopeças, 123<br>Centro, São Paulo - SP</p>
+                        <p>📞 (11) 1234-5678<br>📱 (11) 99999-0000</p>
+                        <p>✉️ contato@hardautopecas.com.br</p>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="footer-divider">
+            
+            <div class="footer-bottom">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="footer-copy">© 2025 Hard Auto Peças. Todos os direitos reservados.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="footer-social">
+                            <a href="#" class="social-link">Facebook</a>
+                            <a href="#" class="social-link">Instagram</a>
+                            <a href="#" class="social-link">WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scroll for back to top
+        document.querySelector('.back-to-top').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Animate elements on scroll
+        const observeElements = () => {
+            const elements = document.querySelectorAll('.list-demo, .list-category, .icon-list li');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            elements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = `all 0.6s ease ${index * 0.1}s`;
+                observer.observe(el);
+            });
+        };
+
+        // Initialize animations when DOM is loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', observeElements);
+        } else {
+            observeElements();
+        }
+    </script>
 </body>
 </html>
 

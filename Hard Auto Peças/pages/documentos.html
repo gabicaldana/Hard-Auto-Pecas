@@ -3,112 +3,661 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documentos (Wireframes) - Hard Auto Peças</title>
+    <title>Documentos e Recursos - Hard Auto Peças</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .docs-section {
+            background: var(--surface-elevated);
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-lg);
+            padding: var(--space-2xl);
+            margin: var(--space-xl) 0;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .docs-category {
+            margin-bottom: var(--space-2xl);
+            padding-bottom: var(--space-xl);
+            border-bottom: 1px solid var(--color-gray-200);
+        }
+        
+        .docs-category:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .docs-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--brand-primary);
+            margin-bottom: var(--space-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+        
+        .wireframe-card {
+            background: white;
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .wireframe-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--brand-primary);
+        }
+        
+        .wireframe-header {
+            background: linear-gradient(135deg, var(--brand-primary) 0%, #e55a2b 100%);
+            color: white;
+            padding: var(--space-lg);
+            text-align: center;
+        }
+        
+        .wireframe-title {
+            margin: 0;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .wireframe-description {
+            font-size: 0.875rem;
+            opacity: 0.9;
+            margin: 0;
+            margin-top: var(--space-xs);
+        }
+        
+        .wireframe-content {
+            padding: var(--space-lg);
+            text-align: center;
+        }
+        
+        .wireframe-placeholder {
+            width: 100%;
+            height: 200px;
+            background: var(--color-gray-100);
+            border: 2px dashed var(--color-gray-300);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            margin-bottom: var(--space-md);
+        }
+        
+        .wireframe-card:hover .wireframe-placeholder {
+            background: var(--color-gray-50);
+            border-color: var(--brand-primary);
+        }
+        
+        .wireframe-icon {
+            font-size: 2rem;
+            margin-bottom: var(--space-sm);
+            color: var(--brand-primary);
+        }
+        
+        .document-card {
+            background: white;
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-lg);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .document-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--brand-primary);
+        }
+        
+        .document-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+        
+        .document-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            background: var(--brand-primary);
+        }
+        
+        .document-info h4 {
+            margin: 0;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .document-type {
+            color: var(--brand-primary);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        .document-description {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-md);
+            line-height: 1.6;
+        }
+        
+        .document-actions {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+        
+        .btn-document {
+            background: var(--brand-primary);
+            color: white;
+            border: none;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            transition: all 0.3s ease;
+            font-size: 0.875rem;
+        }
+        
+        .btn-document:hover {
+            background: var(--brand-secondary);
+            color: white;
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+        
+        .btn-secondary {
+            background: var(--color-gray-100);
+            color: var(--text-secondary);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--color-gray-200);
+            color: var(--text-primary);
+        }
+        
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+        }
+        
+        .status-badge {
+            background: var(--color-gray-100);
+            color: var(--text-secondary);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-md);
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .status-ready {
+            background: rgba(16, 185, 129, 0.1);
+            color: #059669;
+        }
+        
+        .status-wip {
+            background: rgba(245, 158, 11, 0.1);
+            color: #d97706;
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="../index.html"><img src="../logo_simbolos/HardAutoPecas.png" width="120" alt="Hard Auto Peças"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Alternar navegação">
+    <!-- Modern Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-modern sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <img src="../logo_simbolos/HardAutoPecas.png" alt="Hard Auto Peças" class="navbar-logo">
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div id="navbar" class="collapse navbar-collapse">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="../index.html">Início</a></li>
-                    <li class="nav-item"><a class="nav-link" href="galeria.html">Galeria</a></li>
-                    <li class="nav-item"><a class="nav-link" href="empresa.html">Empresa</a></li>
-                    <li class="nav-item"><a class="nav-link" href="artigos.html">Artigos</a></li>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="galeria.html">Galeria</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="empresa.html">Empresa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="artigos.html">Blog</a>
+                    </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mais</a>
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                            Recursos
+                        </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="formatacao.html">Formatação</a></li>
                             <li><a class="dropdown-item" href="listas.html">Listas</a></li>
-                            <li><a class="dropdown-item" href="links.html">Links Externos</a></li>
-                            <li><a class="dropdown-item" href="tabela.html">Tabela</a></li>
-                            <li><a class="dropdown-item" href="documentos.html">Documentos</a></li>
+                            <li><a class="dropdown-item" href="links.html">Links</a></li>
+                            <li><a class="dropdown-item" href="tabela.html">Tabelas</a></li>
+                            <li><a class="dropdown-item active" href="documentos.html">Documentos</a></li>
                         </ul>
                     </li>
                 </ul>
-                <form class="d-flex me-3" role="search">
-                    <input class="form-control me-2" type="search" placeholder="O que você busca?" aria-label="Search" />
-                    <button class="btn btn-outline-dark" type="submit">Buscar</button>
-                </form>
-                <ul class="navbar-nav ms-auto align-items-center gap-2">
-                    <li class="nav-item"><a class="nav-link" href="#" title="Localização"><svg style="color: orangered;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></svg></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" title="Informações"><svg style="color: orangered;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16"><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/></svg></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" title="Minha conta"><svg style="color: orangered;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></svg></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" title="Carrinho"><svg style="color: orangered;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16"><path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/></svg></a></li>
-                </ul>
+                
+                <div class="navbar-search me-3">
+                    <form class="d-flex">
+                        <input class="form-control" type="search" placeholder="Pesquisar...">
+                        <button class="btn btn-search" type="submit">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="navbar-actions">
+                    <a href="#" class="nav-action" title="Localização">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="nav-action" title="Conta">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="nav-action" title="Carrinho">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <main class="container section content-narrow">
-        <h1 class="h3 title-underline">Wireframes (documentos)</h1>
-        <p>Inclua aqui imagens PNG/JPG ou PDFs com os wireframes de cada página do site. Por enquanto, usamos espaços reservados.</p>
+    <!-- Hero Section -->
+    <section class="hero-section bg-gradient">
+        <div class="container">
+            <div class="hero-content text-center">
+                <h1 class="hero-title">Documentos e Recursos</h1>
+                <p class="hero-subtitle">Wireframes, manuais e documentação técnica do projeto</p>
+            </div>
+        </div>
+    </section>
 
-        <div class="row row-cols-1 row-cols-md-2 g-3">
-            <div class="col">
-                <div class="hero text-center">
-                    <h2 class="h5">Home</h2>
-                    <img class="img-fluid" src="https://dummyimage.com/800x500/eeeeee/aaaaaa&text=Wireframe+Home" alt="Wireframe Home">
+    <!-- Main Content -->
+    <main class="section">
+        <div class="container">
+            <div class="content-narrow mx-auto">
+                
+                <!-- Wireframes Section -->
+                <div class="docs-section">
+                    <div class="docs-category">
+                        <h2 class="docs-title">
+                            📐 Wireframes das Páginas
+                        </h2>
+                        
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="wireframe-card">
+                                    <div class="wireframe-header">
+                                        <h3 class="wireframe-title">Página Inicial</h3>
+                                        <p class="wireframe-description">Layout principal com hero section e navegação</p>
+                                    </div>
+                                    <div class="wireframe-content">
+                                        <div class="wireframe-placeholder">
+                                            <div class="wireframe-icon">🏠</div>
+                                            <p>Wireframe da Home</p>
+                                        </div>
+                                        <span class="status-badge status-ready">Concluído</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="wireframe-card">
+                                    <div class="wireframe-header">
+                                        <h3 class="wireframe-title">Galeria de Produtos</h3>
+                                        <p class="wireframe-description">Grid responsivo com filtros e categorias</p>
+                                    </div>
+                                    <div class="wireframe-content">
+                                        <div class="wireframe-placeholder">
+                                            <div class="wireframe-icon">🖼️</div>
+                                            <p>Wireframe da Galeria</p>
+                                        </div>
+                                        <span class="status-badge status-ready">Concluído</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="wireframe-card">
+                                    <div class="wireframe-header">
+                                        <h3 class="wireframe-title">Sobre a Empresa</h3>
+                                        <p class="wireframe-description">Informações corporativas e equipe</p>
+                                    </div>
+                                    <div class="wireframe-content">
+                                        <div class="wireframe-placeholder">
+                                            <div class="wireframe-icon">🏢</div>
+                                            <p>Wireframe da Empresa</p>
+                                        </div>
+                                        <span class="status-badge status-ready">Concluído</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="wireframe-card">
+                                    <div class="wireframe-header">
+                                        <h3 class="wireframe-title">Blog e Artigos</h3>
+                                        <p class="wireframe-description">Layout de blog com sidebar e widgets</p>
+                                    </div>
+                                    <div class="wireframe-content">
+                                        <div class="wireframe-placeholder">
+                                            <div class="wireframe-icon">📝</div>
+                                            <p>Wireframe do Blog</p>
+                                        </div>
+                                        <span class="status-badge status-ready">Concluído</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="wireframe-card">
+                                    <div class="wireframe-header">
+                                        <h3 class="wireframe-title">Formatação de Texto</h3>
+                                        <p class="wireframe-description">Demonstração de estilos tipográficos</p>
+                                    </div>
+                                    <div class="wireframe-content">
+                                        <div class="wireframe-placeholder">
+                                            <div class="wireframe-icon">🔤</div>
+                                            <p>Wireframe de Formatação</p>
+                                        </div>
+                                        <span class="status-badge status-ready">Concluído</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="wireframe-card">
+                                    <div class="wireframe-header">
+                                        <h3 class="wireframe-title">Tabelas e Comparativos</h3>
+                                        <p class="wireframe-description">Layouts de tabelas complexas</p>
+                                    </div>
+                                    <div class="wireframe-content">
+                                        <div class="wireframe-placeholder">
+                                            <div class="wireframe-icon">📊</div>
+                                            <p>Wireframe de Tabelas</p>
+                                        </div>
+                                        <span class="status-badge status-ready">Concluído</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Documentation Section -->
+                    <div class="docs-category">
+                        <h2 class="docs-title">
+                            📚 Documentação Técnica
+                        </h2>
+                        
+                        <div class="resource-grid">
+                            <div class="document-card">
+                                <div class="document-header">
+                                    <div class="document-icon">📋</div>
+                                    <div class="document-info">
+                                        <h4>Guia de Estilo</h4>
+                                        <div class="document-type">Style Guide • PDF</div>
+                                    </div>
+                                </div>
+                                <div class="document-description">
+                                    Documentação completa do sistema de design, incluindo cores, tipografia, componentes e padrões de interface.
+                                </div>
+                                <div class="document-actions">
+                                    <a href="#" class="btn-document">
+                                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                                        </svg>
+                                        Baixar PDF
+                                    </a>
+                                    <a href="#" class="btn-document btn-secondary">
+                                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                                        </svg>
+                                        Ver Online
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="document-card">
+                                <div class="document-header">
+                                    <div class="document-icon">⚙️</div>
+                                    <div class="document-info">
+                                        <h4>Manual Técnico</h4>
+                                        <div class="document-type">Technical Docs • HTML</div>
+                                    </div>
+                                </div>
+                                <div class="document-description">
+                                    Documentação técnica para desenvolvedores, incluindo estrutura do código, APIs e instruções de deployment.
+                                </div>
+                                <div class="document-actions">
+                                    <a href="#" class="btn-document">
+                                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                            <path d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
+                                            <path d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
+                                        </svg>
+                                        Acessar Docs
+                                    </a>
+                                    <a href="#" class="btn-document btn-secondary">
+                                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                            <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                            <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                        </svg>
+                                        Suporte
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="document-card">
+                                <div class="document-header">
+                                    <div class="document-icon">🎨</div>
+                                    <div class="document-info">
+                                        <h4>Assets de Design</h4>
+                                        <div class="document-type">Design Files • ZIP</div>
+                                    </div>
+                                </div>
+                                <div class="document-description">
+                                    Pacote completo com logos, ícones, imagens e recursos gráficos em alta resolução para uso no projeto.
+                                </div>
+                                <div class="document-actions">
+                                    <a href="#" class="btn-document">
+                                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                                        </svg>
+                                        Baixar ZIP
+                                    </a>
+                                    <a href="#" class="btn-document btn-secondary">
+                                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                                        </svg>
+                                        Repositório
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="document-card">
+                                <div class="document-header">
+                                    <div class="document-icon">📋</div>
+                                    <div class="document-info">
+                                        <h4>Especificações</h4>
+                                        <div class="document-type">Requirements • DOCX</div>
+                                    </div>
+                                </div>
+                                <div class="document-description">
+                                    Documento com todos os requisitos funcionais e não-funcionais, casos de uso e critérios de aceitação.
+                                </div>
+                                <div class="document-actions">
+                                    <a href="#" class="btn-document">
+                                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                                        </svg>
+                                        Baixar DOCX
+                                    </a>
+                                    <a href="#" class="btn-document btn-secondary">
+                                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                            <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
+                                        </svg>
+                                        Ler Online
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col">
-                <div class="hero text-center">
-                    <h2 class="h5">Produtos</h2>
-                    <img class="img-fluid" src="https://dummyimage.com/800x500/eeeeee/aaaaaa&text=Wireframe+Produtos" alt="Wireframe Produtos">
-                </div>
-            </div>
-            <div class="col">
-                <div class="hero text-center">
-                    <h2 class="h5">Empresa</h2>
-                    <img class="img-fluid" src="https://dummyimage.com/800x500/eeeeee/aaaaaa&text=Wireframe+Empresa" alt="Wireframe Empresa">
-                </div>
-            </div>
-            <div class="col">
-                <div class="hero text-center">
-                    <h2 class="h5">Texto / Âncoras</h2>
-                    <img class="img-fluid" src="https://dummyimage.com/800x500/eeeeee/aaaaaa&text=Wireframe+Texto" alt="Wireframe Texto">
-                </div>
-            </div>
-            <div class="col">
-                <div class="hero text-center">
-                    <h2 class="h5">Listas</h2>
-                    <img class="img-fluid" src="https://dummyimage.com/800x500/eeeeee/aaaaaa&text=Wireframe+Listas" alt="Wireframe Listas">
-                </div>
-            </div>
-            <div class="col">
-                <div class="hero text-center">
-                    <h2 class="h5">Formatações</h2>
-                    <img class="img-fluid" src="https://dummyimage.com/800x500/eeeeee/aaaaaa&text=Wireframe+Formatacoes" alt="Wireframe Formatações">
-                </div>
-            </div>
-            <div class="col">
-                <div class="hero text-center">
-                    <h2 class="h5">Links Externos</h2>
-                    <img class="img-fluid" src="https://dummyimage.com/800x500/eeeeee/aaaaaa&text=Wireframe+Links" alt="Wireframe Links">
-                </div>
-            </div>
-            <div class="col">
-                <div class="hero text-center">
-                    <h2 class="h5">Tabela</h2>
-                    <img class="img-fluid" src="https://dummyimage.com/800x500/eeeeee/aaaaaa&text=Wireframe+Tabela" alt="Wireframe Tabela">
+
+                <!-- Back to Top -->
+                <div class="text-center">
+                    <a href="#" class="back-to-top">
+                        ↑ Voltar ao topo
+                    </a>
                 </div>
             </div>
         </div>
     </main>
 
-    <footer class="mt-4 py-4">
-        <div class="container d-flex justify-content-between align-items-center">
-            <small>© 2025 Hard Auto Peças</small>
-            <a class="text-white" href="#">Voltar ao topo</a>
+    <!-- Modern Footer -->
+    <footer class="modern-footer">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-lg-4">
+                    <div class="footer-brand">
+                        <img src="../logo_simbolos/HardAutoPecas.png" alt="Hard Auto Peças" class="footer-logo">
+                        <p class="footer-description">
+                            Sua loja de confiança para autopeças de qualidade. 
+                            Atendemos com excelência há mais de 20 anos.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-sm-6 col-lg-2">
+                    <h5 class="footer-title">Links Rápidos</h5>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Início</a></li>
+                        <li><a href="galeria.html">Galeria</a></li>
+                        <li><a href="empresa.html">Empresa</a></li>
+                        <li><a href="artigos.html">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-sm-6 col-lg-2">
+                    <h5 class="footer-title">Recursos</h5>
+                    <ul class="footer-links">
+                        <li><a href="formatacao.html">Formatação</a></li>
+                        <li><a href="listas.html">Listas</a></li>
+                        <li><a href="links.html">Links</a></li>
+                        <li><a href="tabela.html">Tabelas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-4">
+                    <h5 class="footer-title">Contato</h5>
+                    <div class="footer-contact">
+                        <p>📍 Rua das Autopeças, 123<br>Centro, São Paulo - SP</p>
+                        <p>📞 (11) 1234-5678<br>📱 (11) 99999-0000</p>
+                        <p>✉️ contato@hardautopecas.com.br</p>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="footer-divider">
+            
+            <div class="footer-bottom">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="footer-copy">© 2025 Hard Auto Peças. Todos os direitos reservados.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="footer-social">
+                            <a href="#" class="social-link">Facebook</a>
+                            <a href="#" class="social-link">Instagram</a>
+                            <a href="#" class="social-link">WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scroll for back to top
+        document.querySelector('.back-to-top').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Animate elements on scroll
+        const observeElements = () => {
+            const elements = document.querySelectorAll('.wireframe-card, .document-card, .docs-section');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            elements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = `all 0.6s ease ${index * 0.1}s`;
+                observer.observe(el);
+            });
+        };
+
+        // Initialize animations when DOM is loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', observeElements);
+        } else {
+            observeElements();
+        }
+    </script>
 </body>
 </html>
 

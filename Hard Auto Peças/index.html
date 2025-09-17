@@ -6,6 +6,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hard Auto Peças</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css">
@@ -14,10 +20,12 @@
 <body>
 
     <!--NAVBAR-->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html"><img src="logo_simbolos/HardAutoPecas.png" width="120" alt="Hard Auto Peças"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Alternar navegação">
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo_simbolos/HardAutoPecas.png" alt="Hard Auto Peças">
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Alternar navegação">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -29,7 +37,7 @@
                     <li class="nav-item"><a class="nav-link" href="pages/artigos.html">Artigos</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mais</a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu modern-dropdown">
                             <li><a class="dropdown-item" href="pages/formatacao.html">Formatação</a></li>
                             <li><a class="dropdown-item" href="pages/listas.html">Listas</a></li>
                             <li><a class="dropdown-item" href="pages/links.html">Links Externos</a></li>
@@ -38,59 +46,277 @@
                         </ul>
                     </li>
                 </ul>
-                <form class="d-flex me-3" role="search">
-                    <input class="form-control me-2" type="search" placeholder="O que você busca?" aria-label="Search" />
-                    <button class="btn btn-outline-dark" type="submit">Buscar</button>
-                </form>
-                <ul class="navbar-nav ms-auto align-items-center gap-2">
-                    <li class="nav-item"><a class="nav-link" href="#" title="Localização">
-                        <svg style="color: orangered;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></svg>
-                    </a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" title="Informações">
-                        <svg style="color: orangered;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16"><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/></svg>
-                    </a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" title="Minha conta">
-                        <svg style="color: orangered;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></svg>
-                    </a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" title="Carrinho">
-                        <svg style="color: orangered;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16"><path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/></svg>
-                    </a></li>
-                </ul>
+                
+                <div class="navbar-actions d-flex align-items-center gap-3">
+                    <form class="search-form d-none d-lg-flex" role="search">
+                        <div class="search-input-group">
+                            <input class="form-control" type="search" placeholder="Buscar peças..." aria-label="Search" />
+                            <button class="search-btn" type="submit">
+                                <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <div class="navbar-icons d-flex align-items-center gap-2">
+                        <a class="nav-icon" href="#" title="Localização" data-bs-toggle="tooltip">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                            </svg>
+                        </a>
+                        <a class="nav-icon" href="#" title="Informações" data-bs-toggle="tooltip">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+                            </svg>
+                        </a>
+                        <a class="nav-icon" href="#" title="Minha conta" data-bs-toggle="tooltip">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                            </svg>
+                        </a>
+                        <a class="nav-icon cart-icon" href="#" title="Carrinho" data-bs-toggle="tooltip">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                            </svg>
+                            <span class="cart-badge">0</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
-
-
-
-
-       
     </nav>
 
-    <main class="container section content-narrow">
-        <section class="hero mb-4">
-            <h1 class="fw-bold">Bem-vindo à <span class="brand-accent">Hard Auto Peças</span></h1>
-            <p class="mb-3">Sua loja de confiança para peças e acessórios automotivos nacionais e importados.</p>
-            <a href="pages/galeria.html" class="btn btn-warning">Ver galeria</a>
+    <main class="container-fluid px-0">
+        <section class="hero-section">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        Sua loja de confiança para 
+                        <span class="brand-accent">peças automotivas</span>
+                    </h1>
+                    <p class="hero-subtitle lead">
+                        Encontre peças e acessórios nacionais e importados para seu veículo com qualidade garantida e os melhores preços.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="pages/galeria.html" class="btn btn-primary btn-lg me-3">
+                            <span>Ver galeria</span>
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+                            </svg>
+                        </a>
+                        <a href="pages/empresa.html" class="btn btn-outline-primary btn-lg">Sobre nós</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-card">
+                        <div class="card-content">
+                            <div class="card-icon">🔧</div>
+                            <h3>Peças Originais</h3>
+                            <p>Garantia de qualidade</p>
+                        </div>
+                    </div>
+                    <div class="hero-card">
+                        <div class="card-content">
+                            <div class="card-icon">🚗</div>
+                            <h3>Para Todos os Modelos</h3>
+                            <p>Nacionais e importados</p>
+                        </div>
+                    </div>
+                    <div class="hero-card">
+                        <div class="card-content">
+                            <div class="card-icon">⚡</div>
+                            <h3>Entrega Rápida</h3>
+                            <p>Em todo o Brasil</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section class="section">
-            <h2 class="h4 title-underline">Marcas parceiras</h2>
-            <div class="row row-cols-2 row-cols-md-4 g-3 sponsors mt-1">
-                <div class="col"><img src="https://dummyimage.com/300x72/eeeeee/aaaaaa&text=Marca+1" alt="Marca 1"></div>
-                <div class="col"><img src="https://dummyimage.com/300x72/eeeeee/aaaaaa&text=Marca+2" alt="Marca 2"></div>
-                <div class="col"><img src="https://dummyimage.com/300x72/eeeeee/aaaaaa&text=Marca+3" alt="Marca 3"></div>
-                <div class="col"><img src="https://dummyimage.com/300x72/eeeeee/aaaaaa&text=Marca+4" alt="Marca 4"></div>
+        <section class="section container">
+            <div class="section-header text-center mb-5">
+                <h2 class="section-title">Marcas parceiras</h2>
+                <p class="section-subtitle">Trabalhamos com as melhores marcas do mercado automotivo</p>
+            </div>
+            <div class="brands-grid">
+                <div class="brand-card">
+                    <img src="https://dummyimage.com/300x120/f5f5f5/a3a3a3&text=Marca+1" alt="Marca 1">
+                </div>
+                <div class="brand-card">
+                    <img src="https://dummyimage.com/300x120/f5f5f5/a3a3a3&text=Marca+2" alt="Marca 2">
+                </div>
+                <div class="brand-card">
+                    <img src="https://dummyimage.com/300x120/f5f5f5/a3a3a3&text=Marca+3" alt="Marca 3">
+                </div>
+                <div class="brand-card">
+                    <img src="https://dummyimage.com/300x120/f5f5f5/a3a3a3&text=Marca+4" alt="Marca 4">
+                </div>
+                <div class="brand-card">
+                    <img src="https://dummyimage.com/300x120/f5f5f5/a3a3a3&text=Marca+5" alt="Marca 5">
+                </div>
+                <div class="brand-card">
+                    <img src="https://dummyimage.com/300x120/f5f5f5/a3a3a3&text=Marca+6" alt="Marca 6">
+                </div>
             </div>
         </section>
     </main>
 
-    <footer class="py-4">
-        <div class="container d-flex justify-content-between align-items-center">
-            <small>© 2025 Hard Auto Peças</small>
-            <a class="text-white" href="#">Voltar ao topo</a>
+    <footer class="modern-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="logo_simbolos/HardAutoPecas.png" alt="Hard Auto Peças" class="footer-logo">
+                    <p class="footer-description">
+                        Sua loja de confiança para peças e acessórios automotivos nacionais e importados.
+                    </p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navegação</h4>
+                        <ul>
+                            <li><a href="index.html">Início</a></li>
+                            <li><a href="pages/galeria.html">Galeria</a></li>
+                            <li><a href="pages/empresa.html">Empresa</a></li>
+                            <li><a href="pages/artigos.html">Artigos</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Recursos</h4>
+                        <ul>
+                            <li><a href="pages/formatacao.html">Formatação</a></li>
+                            <li><a href="pages/listas.html">Listas</a></li>
+                            <li><a href="pages/links.html">Links</a></li>
+                            <li><a href="pages/tabela.html">Tabela</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Contato</h4>
+                        <ul>
+                            <li><a href="tel:+5511999999999">📞 (11) 99999-9999</a></li>
+                            <li><a href="mailto:contato@hardautopecas.com">✉️ contato@hardautopecas.com</a></li>
+                            <li><a href="#">📍 São Paulo, SP</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <small>© 2025 Hard Auto Peças. Todos os direitos reservados.</small>
+                </div>
+                <div class="footer-actions">
+                    <a href="#" class="back-to-top-btn">
+                        <span>Voltar ao topo</span>
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Modern interactions and animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize tooltips
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+
+            // Smooth scroll for back to top
+            const backToTopBtn = document.querySelector('.back-to-top-btn');
+            if (backToTopBtn) {
+                backToTopBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            // Navbar background on scroll
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                    navbar.style.backdropFilter = 'blur(20px)';
+                } else {
+                    navbar.style.background = 'var(--surface-elevated)';
+                }
+            });
+
+            // Add loading animation to buttons
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    if (!this.classList.contains('loading')) {
+                        this.classList.add('loading');
+                        setTimeout(() => {
+                            this.classList.remove('loading');
+                        }, 1000);
+                    }
+                });
+            });
+
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe elements for scroll animations
+            const animatedElements = document.querySelectorAll('.brand-card, .section-header');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+
+            // Search functionality enhancement
+            const searchInput = document.querySelector('.search-input-group .form-control');
+            if (searchInput) {
+                searchInput.addEventListener('focus', function() {
+                    this.parentElement.style.transform = 'scale(1.02)';
+                });
+                
+                searchInput.addEventListener('blur', function() {
+                    this.parentElement.style.transform = 'scale(1)';
+                });
+            }
+
+            // Cart badge animation
+            const cartIcon = document.querySelector('.cart-icon');
+            if (cartIcon) {
+                cartIcon.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const badge = this.querySelector('.cart-badge');
+                    badge.style.animation = 'pulse 0.3s ease';
+                    setTimeout(() => {
+                        badge.style.animation = '';
+                    }, 300);
+                });
+            }
+        });
+    </script>
     </body>
 
     </html>

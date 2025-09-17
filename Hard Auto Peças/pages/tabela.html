@@ -3,177 +3,610 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabela - Hard Auto Peças</title>
+    <title>Tabelas e Comparativos - Hard Auto Peças</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
     <style>
-        body { background-image: linear-gradient(180deg, rgba(255,106,0,0.05), rgba(255,255,255,0)); background-repeat: no-repeat; }
-        .cell-a { background-color: #fff3e6; }
-        .cell-b { background-color: #e6f7ff; }
-        .cell-c { background-color: #eaf7e6; }
-        .cell-d { background-color: #f3e6ff; }
+        .table-section {
+            background: var(--surface-elevated);
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-lg);
+            padding: var(--space-2xl);
+            margin: var(--space-xl) 0;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .table-category {
+            margin-bottom: var(--space-2xl);
+            padding-bottom: var(--space-xl);
+            border-bottom: 1px solid var(--color-gray-200);
+        }
+        
+        .table-category:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .table-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--brand-primary);
+            margin-bottom: var(--space-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+        
+        .modern-table {
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--color-gray-200);
+        }
+        
+        .modern-table table {
+            margin-bottom: 0;
+        }
+        
+        .modern-table thead th {
+            background: linear-gradient(135deg, var(--brand-primary) 0%, #e55a2b 100%);
+            color: white;
+            border: none;
+            padding: var(--space-lg);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .modern-table tbody td {
+            padding: var(--space-lg);
+            border-color: var(--color-gray-200);
+            vertical-align: middle;
+            transition: all 0.3s ease;
+        }
+        
+        .modern-table tbody tr:hover {
+            background: var(--color-gray-50);
+        }
+        
+        .cell-synthetic { background-color: rgba(59, 130, 246, 0.1); }
+        .cell-semisynthetic { background-color: rgba(16, 185, 129, 0.1); }
+        .cell-mineral { background-color: rgba(245, 158, 11, 0.1); }
+        .cell-category { 
+            background: linear-gradient(135deg, var(--brand-primary) 0%, #e55a2b 100%);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .price-tag {
+            background: var(--brand-primary);
+            color: white;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .spec-badge {
+            background: var(--color-gray-100);
+            color: var(--text-secondary);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin: 2px;
+            display: inline-block;
+        }
+        
+        .table-description {
+            background: var(--color-gray-50);
+            border-left: 4px solid var(--brand-primary);
+            padding: var(--space-lg);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .comparison-card {
+            background: white;
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-lg);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+        
+        .comparison-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--brand-primary);
+        }
+        
+        .product-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+        
+        .product-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--brand-primary);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .product-info h4 {
+            margin: 0;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .product-type {
+            color: var(--brand-primary);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-sm);
+            background: var(--color-gray-50);
+            border-radius: var(--radius-md);
+        }
+        
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            color: var(--brand-primary);
+        }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="../index.html"><img src="../logo_simbolos/HardAutoPecas.png" width="120" alt="Hard Auto Peças"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Alternar navegação">
+    <!-- Modern Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-modern sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <img src="../logo_simbolos/HardAutoPecas.png" alt="Hard Auto Peças" class="navbar-logo">
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div id="navbar" class="collapse navbar-collapse">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="../index.html">Início</a></li>
-                    <li class="nav-item"><a class="nav-link" href="galeria.html">Galeria</a></li>
-                    <li class="nav-item"><a class="nav-link" href="empresa.html">Empresa</a></li>
-                    <li class="nav-item"><a class="nav-link" href="artigos.html">Artigos</a></li>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="galeria.html">Galeria</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="empresa.html">Empresa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="artigos.html">Blog</a>
+                    </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mais</a>
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                            Recursos
+                        </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="formatacao.html">Formatação</a></li>
                             <li><a class="dropdown-item" href="listas.html">Listas</a></li>
-                            <li><a class="dropdown-item" href="links.html">Links Externos</a></li>
-                            <li><a class="dropdown-item" href="tabela.html">Tabela</a></li>
+                            <li><a class="dropdown-item" href="links.html">Links</a></li>
+                            <li><a class="dropdown-item active" href="tabela.html">Tabelas</a></li>
                             <li><a class="dropdown-item" href="documentos.html">Documentos</a></li>
                         </ul>
                     </li>
                 </ul>
-                <form class="d-flex me-3" role="search">
-                    <input class="form-control me-2" type="search" placeholder="O que você busca?" aria-label="Search" />
-                    <button class="btn btn-outline-dark" type="submit">Buscar</button>
-                </form>
-                <ul class="navbar-nav ms-auto align-items-center gap-2">
-                    <li class="nav-item"><a class="nav-link" href="#" title="Localização"><svg style="color: orangered;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></svg></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" title="Informações"><svg style="color: orangered;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16"><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/></svg></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" title="Minha conta"><svg style="color: orangered;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></svg></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" title="Carrinho"><svg style="color: orangered;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16"><path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/></svg></a></li>
-                </ul>
+                
+                <div class="navbar-search me-3">
+                    <form class="d-flex">
+                        <input class="form-control" type="search" placeholder="Pesquisar...">
+                        <button class="btn btn-search" type="submit">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="navbar-actions">
+                    <a href="#" class="nav-action" title="Localização">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="nav-action" title="Conta">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="nav-action" title="Carrinho">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <main class="container section">
-        <h1 class="h3 title-underline">Comparativo de óleos de motor</h1>
-        <p>5 colunas × 15 linhas com <strong>4 colspans</strong> e <strong>4 rowspans</strong>, e cores de célula variadas.</p>
+    <!-- Hero Section -->
+    <section class="hero-section bg-gradient">
+        <div class="container">
+            <div class="hero-content text-center">
+                <h1 class="hero-title">Tabelas e Comparativos</h1>
+                <p class="hero-subtitle">Compare produtos e encontre a melhor opção para seu veículo</p>
+            </div>
+        </div>
+    </section>
 
-        <div class="table-responsive">
-            <table class="table table-bordered table-simple align-middle text-center">
-                <thead class="table-dark">
-                    <tr>
-                        <th>Marca</th>
-                        <th>Viscosidade</th>
-                        <th>Base</th>
-                        <th>Especificação</th>
-                        <th>Preço</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- 1) COLSPAN #1: seção Sintéticos -->
-                    <tr>
-                        <td class="cell-a" colspan="5"><strong>Sintéticos</strong></td>
-                    </tr>
-                    <!-- ROWSPAN #1: Mobil 1 em 2 linhas -->
-                    <tr>
-                        <td class="cell-b" rowspan="2">Mobil 1</td>
-                        <td class="cell-c">0W-20</td>
-                        <td class="cell-d">Sintético</td>
-                        <td class="cell-a">API SP / ILSAC GF-6</td>
-                        <td class="cell-b">R$ 89,00</td>
-                    </tr>
-                    <tr>
-                        <td class="cell-c">5W-30</td>
-                        <td class="cell-d">Sintético</td>
-                        <td class="cell-a">API SP</td>
-                        <td class="cell-b">R$ 95,00</td>
-                    </tr>
-                    <tr>
-                        <td class="cell-b">Shell Helix Ultra</td>
-                        <td class="cell-c">5W-40</td>
-                        <td class="cell-d">Sintético</td>
-                        <td class="cell-a">API SP / ACEA A3/B4</td>
-                        <td class="cell-b">R$ 79,00</td>
-                    </tr>
-                    <tr>
-                        <td class="cell-b">Petronas Syntium</td>
-                        <td class="cell-c">0W-30</td>
-                        <td class="cell-d">Sintético</td>
-                        <td class="cell-a">ACEA C2</td>
-                        <td class="cell-b">R$ 85,00</td>
-                    </tr>
-                    <!-- 2) COLSPAN #2: seção Semissintéticos -->
-                    <tr>
-                        <td class="cell-a" colspan="5"><strong>Semissintéticos</strong></td>
-                    </tr>
-                    <!-- ROWSPAN #2: Castrol Magnatec em 2 linhas -->
-                    <tr>
-                        <td class="cell-b" rowspan="2">Castrol Magnatec</td>
-                        <td class="cell-c">10W-40</td>
-                        <td class="cell-d">Semissintético</td>
-                        <td class="cell-a">API SN</td>
-                        <td class="cell-b">R$ 59,00</td>
-                    </tr>
-                    <tr>
-                        <td class="cell-c">15W-40</td>
-                        <td class="cell-d">Semissintético</td>
-                        <td class="cell-a">API SL</td>
-                        <td class="cell-b">R$ 55,00</td>
-                    </tr>
-                    <!-- ROWSPAN #3: Havoline em 2 linhas -->
-                    <tr>
-                        <td class="cell-b" rowspan="2">Havoline</td>
-                        <td class="cell-c">10W-30</td>
-                        <td class="cell-d">Semissintético</td>
-                        <td class="cell-a">API SN</td>
-                        <td class="cell-b">R$ 57,00</td>
-                    </tr>
-                    <tr>
-                        <td class="cell-c">5W-30</td>
-                        <td class="cell-d">Semissintético</td>
-                        <td class="cell-a">API SN Plus</td>
-                        <td class="cell-b">R$ 62,00</td>
-                    </tr>
-                    <!-- 3) COLSPAN #3: seção Minerais -->
-                    <tr>
-                        <td class="cell-a" colspan="5"><strong>Minerais</strong></td>
-                    </tr>
-                    <!-- ROWSPAN #4: Shell Helix HX3 em 2 linhas -->
-                    <tr>
-                        <td class="cell-b" rowspan="2">Shell Helix HX3</td>
-                        <td class="cell-c">20W-50</td>
-                        <td class="cell-d">Mineral</td>
-                        <td class="cell-a">API SL</td>
-                        <td class="cell-b">R$ 45,00</td>
-                    </tr>
-                    <tr>
-                        <td class="cell-c">15W-40</td>
-                        <td class="cell-d">Mineral</td>
-                        <td class="cell-a">API SJ</td>
-                        <td class="cell-b">R$ 43,00</td>
-                    </tr>
-                    <tr>
-                        <td class="cell-b">Lubrax TR</td>
-                        <td class="cell-c">20W-50</td>
-                        <td class="cell-d">Mineral</td>
-                        <td class="cell-a">API SL</td>
-                        <td class="cell-b">R$ 39,00</td>
-                    </tr>
-                    <!-- 4) COLSPAN #4: observação final -->
-                    <tr>
-                        <td class="cell-a" colspan="5">Preços ilustrativos; consulte o manual do veículo para especificações recomendadas.</td>
-                    </tr>
-                </tbody>
-            </table>
+    <!-- Main Content -->
+    <main class="section">
+        <div class="container">
+            <div class="content-narrow mx-auto">
+                
+                <!-- Oil Comparison Table -->
+                <div class="table-section">
+                    <div class="table-category">
+                        <h2 class="table-title">
+                            🛢️ Comparativo de Óleos de Motor
+                        </h2>
+                        
+                        <div class="table-description">
+                            <p class="mb-2"><strong>Comparação completa de óleos lubrificantes</strong></p>
+                            <p class="mb-0">Tabela com 5 colunas × 15 linhas, incluindo <strong>colspan</strong> e <strong>rowspan</strong> para melhor organização das informações.</p>
+                        </div>
+                        
+                        <div class="modern-table">
+                            <div class="table-responsive">
+                                <table class="table table-bordered align-middle text-center">
+                                    <thead>
+                                        <tr>
+                                            <th>Marca</th>
+                                            <th>Viscosidade</th>
+                                            <th>Base</th>
+                                            <th>Especificação</th>
+                                            <th>Preço</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Seção Sintéticos -->
+                                        <tr>
+                                            <td class="cell-category" colspan="5">Óleos Sintéticos</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="cell-synthetic" rowspan="2"><strong>Mobil 1</strong></td>
+                                            <td class="cell-synthetic">0W-20</td>
+                                            <td class="cell-synthetic">Sintético</td>
+                                            <td class="cell-synthetic">
+                                                <span class="spec-badge">API SP</span>
+                                                <span class="spec-badge">ILSAC GF-6</span>
+                                            </td>
+                                            <td class="cell-synthetic"><span class="price-tag">R$ 89,00</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="cell-synthetic">5W-30</td>
+                                            <td class="cell-synthetic">Sintético</td>
+                                            <td class="cell-synthetic"><span class="spec-badge">API SP</span></td>
+                                            <td class="cell-synthetic"><span class="price-tag">R$ 95,00</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="cell-synthetic"><strong>Shell Helix Ultra</strong></td>
+                                            <td class="cell-synthetic">5W-40</td>
+                                            <td class="cell-synthetic">Sintético</td>
+                                            <td class="cell-synthetic">
+                                                <span class="spec-badge">API SP</span>
+                                                <span class="spec-badge">ACEA A3/B4</span>
+                                            </td>
+                                            <td class="cell-synthetic"><span class="price-tag">R$ 79,00</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="cell-synthetic"><strong>Petronas Syntium</strong></td>
+                                            <td class="cell-synthetic">0W-30</td>
+                                            <td class="cell-synthetic">Sintético</td>
+                                            <td class="cell-synthetic"><span class="spec-badge">ACEA C2</span></td>
+                                            <td class="cell-synthetic"><span class="price-tag">R$ 85,00</span></td>
+                                        </tr>
+                                        
+                                        <!-- Seção Semissintéticos -->
+                                        <tr>
+                                            <td class="cell-category" colspan="5">Óleos Semissintéticos</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="cell-semisynthetic" rowspan="2"><strong>Castrol Magnatec</strong></td>
+                                            <td class="cell-semisynthetic">10W-40</td>
+                                            <td class="cell-semisynthetic">Semissintético</td>
+                                            <td class="cell-semisynthetic"><span class="spec-badge">API SN</span></td>
+                                            <td class="cell-semisynthetic"><span class="price-tag">R$ 59,00</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="cell-semisynthetic">15W-40</td>
+                                            <td class="cell-semisynthetic">Semissintético</td>
+                                            <td class="cell-semisynthetic"><span class="spec-badge">API SL</span></td>
+                                            <td class="cell-semisynthetic"><span class="price-tag">R$ 55,00</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="cell-semisynthetic" rowspan="2"><strong>Havoline</strong></td>
+                                            <td class="cell-semisynthetic">10W-30</td>
+                                            <td class="cell-semisynthetic">Semissintético</td>
+                                            <td class="cell-semisynthetic"><span class="spec-badge">API SN</span></td>
+                                            <td class="cell-semisynthetic"><span class="price-tag">R$ 57,00</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="cell-semisynthetic">5W-30</td>
+                                            <td class="cell-semisynthetic">Semissintético</td>
+                                            <td class="cell-semisynthetic"><span class="spec-badge">API SN Plus</span></td>
+                                            <td class="cell-semisynthetic"><span class="price-tag">R$ 62,00</span></td>
+                                        </tr>
+                                        
+                                        <!-- Seção Minerais -->
+                                        <tr>
+                                            <td class="cell-category" colspan="5">Óleos Minerais</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="cell-mineral" rowspan="2"><strong>Shell Helix HX3</strong></td>
+                                            <td class="cell-mineral">20W-50</td>
+                                            <td class="cell-mineral">Mineral</td>
+                                            <td class="cell-mineral"><span class="spec-badge">API SL</span></td>
+                                            <td class="cell-mineral"><span class="price-tag">R$ 45,00</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="cell-mineral">15W-40</td>
+                                            <td class="cell-mineral">Mineral</td>
+                                            <td class="cell-mineral"><span class="spec-badge">API SJ</span></td>
+                                            <td class="cell-mineral"><span class="price-tag">R$ 43,00</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="cell-mineral"><strong>Lubrax TR</strong></td>
+                                            <td class="cell-mineral">20W-50</td>
+                                            <td class="cell-mineral">Mineral</td>
+                                            <td class="cell-mineral"><span class="spec-badge">API SL</span></td>
+                                            <td class="cell-mineral"><span class="price-tag">R$ 39,00</span></td>
+                                        </tr>
+                                        
+                                        <!-- Observação -->
+                                        <tr>
+                                            <td class="cell-category" colspan="5">⚠️ Preços ilustrativos - Consulte sempre o manual do veículo para especificações recomendadas</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Comparison Cards -->
+                    <div class="table-category">
+                        <h2 class="table-title">
+                            🔧 Comparativo de Filtros
+                        </h2>
+                        
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="comparison-card">
+                                    <div class="product-header">
+                                        <div class="product-icon">🛡️</div>
+                                        <div class="product-info">
+                                            <h4>Filtro de Óleo Premium</h4>
+                                            <div class="product-type">Marca: Mann Filter</div>
+                                        </div>
+                                        <div class="ms-auto">
+                                            <span class="price-tag">R$ 35,00</span>
+                                        </div>
+                                    </div>
+                                    <div class="features-grid">
+                                        <div class="feature-item">
+                                            <svg class="feature-icon" fill="currentColor" viewBox="0 0 16 16">
+                                                <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.061L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                                            </svg>
+                                            <span>Eficiência 99%</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <svg class="feature-icon" fill="currentColor" viewBox="0 0 16 16">
+                                                <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.061L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                                            </svg>
+                                            <span>Durabilidade 15.000km</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <svg class="feature-icon" fill="currentColor" viewBox="0 0 16 16">
+                                                <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.061L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                                            </svg>
+                                            <span>Garantia 12 meses</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <svg class="feature-icon" fill="currentColor" viewBox="0 0 16 16">
+                                                <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.061L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                                            </svg>
+                                            <span>Original Quality</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="comparison-card">
+                                    <div class="product-header">
+                                        <div class="product-icon">⚙️</div>
+                                        <div class="product-info">
+                                            <h4>Filtro de Óleo Standard</h4>
+                                            <div class="product-type">Marca: Tecfil</div>
+                                        </div>
+                                        <div class="ms-auto">
+                                            <span class="price-tag">R$ 18,00</span>
+                                        </div>
+                                    </div>
+                                    <div class="features-grid">
+                                        <div class="feature-item">
+                                            <svg class="feature-icon" fill="currentColor" viewBox="0 0 16 16">
+                                                <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.061L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                                            </svg>
+                                            <span>Eficiência 95%</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <svg class="feature-icon" fill="currentColor" viewBox="0 0 16 16">
+                                                <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.061L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                                            </svg>
+                                            <span>Durabilidade 10.000km</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <svg class="feature-icon" fill="currentColor" viewBox="0 0 16 16">
+                                                <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.061L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                                            </svg>
+                                            <span>Garantia 6 meses</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <svg class="feature-icon" fill="currentColor" viewBox="0 0 16 16">
+                                                <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.061L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                                            </svg>
+                                            <span>Custo-benefício</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Back to Top -->
+                <div class="text-center">
+                    <a href="#" class="back-to-top">
+                        ↑ Voltar ao topo
+                    </a>
+                </div>
+            </div>
         </div>
     </main>
 
-    <footer class="mt-4 py-4">
-        <div class="container d-flex justify-content-between align-items-center">
-            <small>© 2025 Hard Auto Peças</small>
-            <a class="text-white" href="#">Voltar ao topo</a>
+    <!-- Modern Footer -->
+    <footer class="modern-footer">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-lg-4">
+                    <div class="footer-brand">
+                        <img src="../logo_simbolos/HardAutoPecas.png" alt="Hard Auto Peças" class="footer-logo">
+                        <p class="footer-description">
+                            Sua loja de confiança para autopeças de qualidade. 
+                            Atendemos com excelência há mais de 20 anos.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-sm-6 col-lg-2">
+                    <h5 class="footer-title">Links Rápidos</h5>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Início</a></li>
+                        <li><a href="galeria.html">Galeria</a></li>
+                        <li><a href="empresa.html">Empresa</a></li>
+                        <li><a href="artigos.html">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-sm-6 col-lg-2">
+                    <h5 class="footer-title">Recursos</h5>
+                    <ul class="footer-links">
+                        <li><a href="formatacao.html">Formatação</a></li>
+                        <li><a href="listas.html">Listas</a></li>
+                        <li><a href="links.html">Links</a></li>
+                        <li><a href="tabela.html">Tabelas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-4">
+                    <h5 class="footer-title">Contato</h5>
+                    <div class="footer-contact">
+                        <p>📍 Rua das Autopeças, 123<br>Centro, São Paulo - SP</p>
+                        <p>📞 (11) 1234-5678<br>📱 (11) 99999-0000</p>
+                        <p>✉️ contato@hardautopecas.com.br</p>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="footer-divider">
+            
+            <div class="footer-bottom">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="footer-copy">© 2025 Hard Auto Peças. Todos os direitos reservados.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="footer-social">
+                            <a href="#" class="social-link">Facebook</a>
+                            <a href="#" class="social-link">Instagram</a>
+                            <a href="#" class="social-link">WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scroll for back to top
+        document.querySelector('.back-to-top').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Animate elements on scroll
+        const observeElements = () => {
+            const elements = document.querySelectorAll('.table-section, .comparison-card, .modern-table');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            elements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = `all 0.6s ease ${index * 0.1}s`;
+                observer.observe(el);
+            });
+        };
+
+        // Initialize animations when DOM is loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', observeElements);
+        } else {
+            observeElements();
+        }
+    </script>
 </body>
 </html>
 

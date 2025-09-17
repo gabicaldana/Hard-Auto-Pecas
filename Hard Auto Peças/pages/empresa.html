@@ -4,17 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Empresa - Hard Auto Peças</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="../index.html"><img src="../logo_simbolos/HardAutoPecas.png" width="120" alt="Hard Auto Peças"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Alternar navegação">
+    <!--NAVBAR-->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <img src="../logo_simbolos/HardAutoPecas.png" alt="Hard Auto Peças">
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Alternar navegação">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div id="navbar" class="collapse navbar-collapse">
+
+            <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="../index.html">Início</a></li>
                     <li class="nav-item"><a class="nav-link" href="galeria.html">Galeria</a></li>
@@ -22,7 +32,7 @@
                     <li class="nav-item"><a class="nav-link" href="artigos.html">Artigos</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mais</a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu modern-dropdown">
                             <li><a class="dropdown-item" href="formatacao.html">Formatação</a></li>
                             <li><a class="dropdown-item" href="listas.html">Listas</a></li>
                             <li><a class="dropdown-item" href="links.html">Links Externos</a></li>
@@ -31,53 +41,372 @@
                         </ul>
                     </li>
                 </ul>
-                <form class="d-flex me-3" role="search">
-                    <input class="form-control me-2" type="search" placeholder="O que você busca?" aria-label="Search" />
-                    <button class="btn btn-outline-dark" type="submit">Buscar</button>
-                </form>
-                <ul class="navbar-nav ms-auto align-items-center gap-2">
-                    <li class="nav-item"><a class="nav-link" href="#" title="Localização"><svg style="color: orangered;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></svg></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" title="Informações"><svg style="color: orangered;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16"><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/></svg></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" title="Minha conta"><svg style="color: orangered;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></svg></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" title="Carrinho"><svg style="color: orangered;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16"><path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/></svg></a></li>
-                </ul>
+                
+                <div class="navbar-actions d-flex align-items-center gap-3">
+                    <form class="search-form d-none d-lg-flex" role="search">
+                        <div class="search-input-group">
+                            <input class="form-control" type="search" placeholder="Buscar peças..." aria-label="Search" />
+                            <button class="search-btn" type="submit">
+                                <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <div class="navbar-icons d-flex align-items-center gap-2">
+                        <a class="nav-icon" href="#" title="Localização" data-bs-toggle="tooltip">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                            </svg>
+                        </a>
+                        <a class="nav-icon" href="#" title="Informações" data-bs-toggle="tooltip">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+                            </svg>
+                        </a>
+                        <a class="nav-icon" href="#" title="Minha conta" data-bs-toggle="tooltip">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                            </svg>
+                        </a>
+                        <a class="nav-icon cart-icon" href="#" title="Carrinho" data-bs-toggle="tooltip">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                            </svg>
+                            <span class="cart-badge">0</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
 
-    <main class="container section content-narrow">
-        <h1 class="h3 title-underline">Empresa</h1>
-        <p>Esta página contém o briefing com as 17 perguntas e respostas. Substitua os textos abaixo pelas suas respostas.</p>
+    <main class="container-fluid px-0">
+        <!-- Hero Section -->
+        <section class="company-hero">
+            <div class="container">
+                <div class="company-hero-content">
+                    <div class="page-header text-center">
+                        <h1 class="page-title">Sobre a <span class="brand-accent">Hard Auto Peças</span></h1>
+                        <p class="page-subtitle lead">Mais de 20 anos oferecendo qualidade e confiança no setor automotivo</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <ol class="list-group list-group-numbered mb-3">
-            <li class="list-group-item">Pergunta 1 — <em>Resposta aqui...</em></li>
-            <li class="list-group-item">Pergunta 2 — <em>Resposta aqui...</em></li>
-            <li class="list-group-item">Pergunta 3 — <em>Resposta aqui...</em></li>
-            <li class="list-group-item">Pergunta 4 — <em>Resposta aqui...</em></li>
-            <li class="list-group-item">Pergunta 5 — <em>Resposta aqui...</em></li>
-            <li class="list-group-item">Pergunta 6 — <em>Resposta aqui...</em></li>
-            <li class="list-group-item">Pergunta 7 — <em>Resposta aqui...</em></li>
-            <li class="list-group-item">Pergunta 8 — <em>Resposta aqui...</em></li>
-            <li class="list-group-item">Pergunta 9 — <em>Resposta aqui...</em></li>
-            <li class="list-group-item">Pergunta 10 — <em>Resposta aqui...</em></li>
-            <li class="list-group-item">Pergunta 11 — <em>Resposta aqui...</em></li>
-            <li class="list-group-item">Pergunta 12 — <em>Resposta aqui...</em></li>
-            <li class="list-group-item">Pergunta 13 — <em>Resposta aqui...</em></li>
-            <li class="list-group-item">Pergunta 14 — <em>Resposta aqui...</em></li>
-            <li class="list-group-item">Pergunta 15 — <em>Resposta aqui...</em></li>
-            <li class="list-group-item">Pergunta 16 — <em>Resposta aqui...</em></li>
-            <li class="list-group-item">Pergunta 17 — <em>Resposta aqui...</em></li>
-        </ol>
+        <!-- Company Story -->
+        <section class="section container">
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6">
+                    <div class="content-box">
+                        <h2>Nossa História</h2>
+                        <p class="lead">Fundada em 2005, a Hard Auto Peças nasceu do sonho de oferecer peças automotivas de qualidade superior com atendimento personalizado.</p>
+                        <p>Começamos como uma pequena loja familiar e, ao longo dos anos, crescemos para nos tornar uma das principais referências em peças automotivas da região. Nossa trajetória é marcada pela constante busca pela excelência e pela satisfação total dos nossos clientes.</p>
+                        <p>Hoje, atendemos milhares de clientes em todo o Brasil, mantendo sempre os mesmos valores que nos trouxeram até aqui: qualidade, confiança e atendimento excepcional.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="image-box">
+                        <img src="https://picsum.photos/seed/company1/600/400" alt="Nossa história" class="img-fluid rounded">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Values -->
+        <section class="section bg-light">
+            <div class="container">
+                <div class="section-header text-center mb-5">
+                    <h2 class="section-title">Nossos Valores</h2>
+                    <p class="section-subtitle">Os princípios que guiam nosso trabalho todos os dias</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="value-card">
+                            <div class="value-icon">🎯</div>
+                            <h3>Qualidade</h3>
+                            <p>Trabalhamos apenas com fornecedores certificados e peças originais ou equivalentes de primeira linha.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="value-card">
+                            <div class="value-icon">🤝</div>
+                            <h3>Confiança</h3>
+                            <p>Construímos relacionamentos duradouros baseados na transparência e honestidade em todas as negociações.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="value-card">
+                            <div class="value-icon">⚡</div>
+                            <h3>Agilidade</h3>
+                            <p>Entrega rápida e eficiente, com logística otimizada para atender suas necessidades com urgência.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team -->
+        <section class="section container">
+            <div class="section-header text-center mb-5">
+                <h2 class="section-title">Nossa Equipe</h2>
+                <p class="section-subtitle">Profissionais especializados e apaixonados pelo que fazem</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="https://picsum.photos/seed/team1/300/300" alt="João Silva">
+                        </div>
+                        <div class="team-info">
+                            <h3>João Silva</h3>
+                            <p class="team-role">Diretor Geral</p>
+                            <p>20 anos de experiência no setor automotivo, especialista em gestão e desenvolvimento de negócios.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="https://picsum.photos/seed/team2/300/300" alt="Maria Santos">
+                        </div>
+                        <div class="team-info">
+                            <h3>Maria Santos</h3>
+                            <p class="team-role">Gerente de Vendas</p>
+                            <p>Especialista em atendimento ao cliente e consultoria técnica em peças automotivas.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="https://picsum.photos/seed/team3/300/300" alt="Carlos Oliveira">
+                        </div>
+                        <div class="team-info">
+                            <h3>Carlos Oliveira</h3>
+                            <p class="team-role">Técnico Especialista</p>
+                            <p>Mecânico experiente com conhecimento profundo em sistemas automotivos e compatibilidade de peças.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="section bg-light">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h2>Entre em Contato</h2>
+                        <p class="lead">Estamos prontos para atender você com a melhor solução em peças automotivas.</p>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <div class="contact-icon">📞</div>
+                                <div>
+                                    <strong>Telefone</strong>
+                                    <p>(11) 99999-9999</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">✉️</div>
+                                <div>
+                                    <strong>E-mail</strong>
+                                    <p>contato@hardautopecas.com</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">📍</div>
+                                <div>
+                                    <strong>Endereço</strong>
+                                    <p>Rua das Peças, 123 - São Paulo, SP</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">🕒</div>
+                                <div>
+                                    <strong>Horário</strong>
+                                    <p>Segunda a Sexta: 8h às 18h<br>Sábado: 8h às 12h</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="contact-form-box">
+                            <h3>Envie uma Mensagem</h3>
+                            <form class="contact-form">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Seu nome" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" placeholder="Seu e-mail" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="tel" class="form-control" placeholder="Seu telefone">
+                                </div>
+                                <div class="mb-3">
+                                    <textarea class="form-control" rows="5" placeholder="Sua mensagem" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Enviar Mensagem</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="text-center mt-5 container">
+            <a href="../index.html" class="back-to-top">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+                </svg>
+                Voltar ao início
+            </a>
+        </div>
     </main>
 
-    <footer class="mt-4 py-4">
-        <div class="container d-flex justify-content-between align-items-center">
-            <small>© 2025 Hard Auto Peças</small>
-            <a class="text-white" href="#">Voltar ao topo</a>
+    <footer class="modern-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="../logo_simbolos/HardAutoPecas.png" alt="Hard Auto Peças" class="footer-logo">
+                    <p class="footer-description">
+                        Sua loja de confiança para peças e acessórios automotivos nacionais e importados.
+                    </p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navegação</h4>
+                        <ul>
+                            <li><a href="../index.html">Início</a></li>
+                            <li><a href="galeria.html">Galeria</a></li>
+                            <li><a href="empresa.html">Empresa</a></li>
+                            <li><a href="artigos.html">Artigos</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Recursos</h4>
+                        <ul>
+                            <li><a href="formatacao.html">Formatação</a></li>
+                            <li><a href="listas.html">Listas</a></li>
+                            <li><a href="links.html">Links</a></li>
+                            <li><a href="tabela.html">Tabela</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Contato</h4>
+                        <ul>
+                            <li><a href="tel:+5511999999999">📞 (11) 99999-9999</a></li>
+                            <li><a href="mailto:contato@hardautopecas.com">✉️ contato@hardautopecas.com</a></li>
+                            <li><a href="#">📍 São Paulo, SP</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <small>© 2025 Hard Auto Peças. Todos os direitos reservados.</small>
+                </div>
+                <div class="footer-actions">
+                    <a href="#" class="back-to-top-btn">
+                        <span>Voltar ao topo</span>
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Modern interactions and animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize tooltips
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+
+            // Smooth scroll for back to top
+            const backToTopBtn = document.querySelector('.back-to-top-btn');
+            if (backToTopBtn) {
+                backToTopBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            // Navbar background on scroll
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                    navbar.style.backdropFilter = 'blur(20px)';
+                } else {
+                    navbar.style.background = 'var(--surface-elevated)';
+                }
+            });
+
+            // Contact form enhancement
+            const contactForm = document.querySelector('.contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.textContent;
+                    
+                    submitBtn.textContent = 'Enviando...';
+                    submitBtn.disabled = true;
+                    
+                    // Simulate form submission
+                    setTimeout(() => {
+                        submitBtn.textContent = 'Mensagem Enviada!';
+                        setTimeout(() => {
+                            submitBtn.textContent = originalText;
+                            submitBtn.disabled = false;
+                            contactForm.reset();
+                        }, 2000);
+                    }, 1000);
+                });
+            }
+
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe elements for scroll animations
+            const animatedElements = document.querySelectorAll('.value-card, .team-card, .content-box, .contact-form-box');
+            animatedElements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+                observer.observe(el);
+            });
+        });
+    </script>
 </body>
 </html>
 
