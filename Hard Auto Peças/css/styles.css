@@ -1466,11 +1466,11 @@ footer.modern-footer::before {
 }
 
 .table-simple {
-    background: var(--surface-elevated);
-    border-radius: var(--radius-lg);
+    background: var(--color-white);
+    border-radius: 0;
     overflow: hidden;
-    box-shadow: var(--shadow-md);
-    border: none;
+    box-shadow: none;
+    border: 1px solid var(--color-gray-200);
 }
 
 .table-simple th,
@@ -1478,13 +1478,79 @@ footer.modern-footer::before {
     vertical-align: middle;
     padding: var(--space-md);
     border-color: var(--color-gray-200);
+    background: var(--color-white);
 }
 
 .table-simple th {
-    background: var(--surface-secondary);
+    background: var(--color-gray-800);
+    font-weight: 600;
+    color: var(--color-white);
+    border-bottom: 2px solid var(--color-gray-900);
+}
+
+/* Table Enhancements - pleasant, modern look without changing structure */
+.title-underline {
+    position: relative;
+    padding-bottom: 6px;
+}
+
+.title-underline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 80px;
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--brand-primary), var(--brand-primary-dark));
+    box-shadow: 0 2px 6px rgba(255, 107, 53, 0.25);
+}
+
+.table-simple thead th {
+    position: static;
+    top: auto;
+    z-index: auto;
+    background: var(--color-gray-800);
+    color: var(--color-white);
+    border-bottom: 2px solid var(--color-gray-900);
+}
+
+.table-simple tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.table-simple tbody tr:hover td:not([colspan]) {
+    background-color: transparent;
+}
+
+/* Emphasize first and last useful columns */
+.table-simple tbody td:first-child:not([colspan]) {
     font-weight: 600;
     color: var(--text-primary);
 }
+
+
+
+/* Section rows with colspan look like separators */
+.table-simple tbody td[colspan] {
+    background: var(--color-gray-100);
+    color: var(--text-primary);
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: 0;
+    text-align: center;
+    border-top: 1px solid var(--color-gray-200);
+    border-bottom: 1px solid var(--color-gray-200);
+}
+
+/* Harmonize custom cell colors with the brand palette */
+.cell-a { background-color: transparent !important; }
+.cell-b { background-color: transparent !important; }
+.cell-c { background-color: transparent !important; }
+.cell-d { background-color: transparent !important; }
+
+/* Footer touch-ups on this page without changing markup */
+
 
 .back-to-top {
     display: inline-flex;
